@@ -1,0 +1,11 @@
+{% extends 'main.html' %} 
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'styles/home_componet.css' %}"/>
+{% endblock extrahead %}
+    
+{% block content %}
+    <h1>Admin Pannel For Employee Manage System</h1>
+  {% include "esaapp/home_componet.html" %}
+{% endblock content %}
