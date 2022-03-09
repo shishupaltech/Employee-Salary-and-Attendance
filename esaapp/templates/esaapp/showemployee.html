@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}
+    Add Department
+{% endblock title %}
+
+
+
+    
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'styles/showemployee.css' %}"/>
+
+{% endblock extrahead %}
+
+{% block nav %}
+    {% include "navbar.html" %}
+{% endblock nav %}
+
+{% block content %}
+
+
+<section class="section">
+
+    <h1>All the Department Here</h1>
+    <div class="container">
+        <div class="card">
+            <div class="showdata">
+             
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Department Name</th>
+                        <th>Emp_Name</th>
+                        <th>Emp_Address</th>
+                        <th>Emp_PermanentAddr</th>
+                        <th>Emp_City</th>
+                        <th>Emp_Pincode</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for empdata in empData%}
+                            
+                        <tr>
+                         
+                          <td>{{empdata.department}}</td>
+                          <td>{{empdata.fullName}}</td>
+                          <td>{{empdata.address}}</td>
+                          <td>{{empdata.permanentAddr}}</td>
+                          <td>{{empdata.city}}</td>
+                          <td>{{empdata.pincode}}</td>
+                          
+                          <td><a href="#" class="update">Update</a></td>
+                          <td><a href="#" class="delete">Delete</a></td>
+                          
+                        </tr>
+                        {% endfor %}
+                            
+                      
+                    </tbody>
+                  </table>
+            
+
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}

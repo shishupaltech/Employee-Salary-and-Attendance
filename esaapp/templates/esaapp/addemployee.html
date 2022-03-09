@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}
+    Add Employee
+{% endblock title %}
+
+
+
+    
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'styles/adddepartment.css' %}"/>
+{% endblock extrahead %}
+
+{% block nav %}
+    {% include "navbar.html" %}
+{% endblock nav %}
+{% block content %}
+<section class="section">
+
+    <h1>Add DipartMent To joing the Employee</h1>
+    <button class="show_department"><a href="{% url 'showemployee' %}">Show Employee</a></button>
+    <div class="container">
+        <div class="card">
+            <div class="form shadow">
+                
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                {{form.as_p}}
+                
+                <button type="submit" class="btn btn-success">Add Employee</button>
+
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
