@@ -1,0 +1,28 @@
+
+<!-- <form method="post">
+    {% csrf_token %}
+    <label>From date:</label>
+    <input type="datetime" id="datef" name="datef"><br><br>
+    <label > To Date:</label>
+    <input type="datetime" id="datet" name="datet"><br><br>
+    <input type="submit" value="Submit">
+  </form> -->
+  <div class="search-container">
+    <form method="GET" action="/search_salary">
+      <input type="datetime" placeholder="Search.." name="search" id="search">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+{%for item in salary%}
+<pre>
+Name:{{item.fullName}}  
+<hr><hr>
+Month:{{item.month}}
+Acc. No.:{{item.bankAccount}} 
+TA: {{item.TravelAllowance}} 
+MA:{{item.MedicalAllowance}}
+WA:{{item.WashingAllowance}}
+TotalL:{{item.total}}
+</pre>
+{% endfor %}

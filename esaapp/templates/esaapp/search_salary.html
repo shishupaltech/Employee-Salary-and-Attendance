@@ -1,0 +1,12 @@
+{%for item in sal%}
+<pre>
+Name:{{item.fullName}}  
+<hr><hr>
+Month:{{item.month}}
+Acc. No.:{{item.bankAccount}} 
+TA: {{item.TravelAllowance}} 
+MA:{{item.MedicalAllowance}}
+WA:{{item.WashingAllowance}}
+TotalL:{{item.total}}
+</pre>
+{% endfor %}
