@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}
+    Add Department
+{% endblock title %}
+
+
+
+    
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'styles/empattendance.css' %}"/>
+{% endblock extrahead %}
+
+{% block nav %}
+    {% include "navbar.html" %}
+{% endblock nav %}
+{% block content %}
+<section class="section2">
+
+    <h1>Marks The Attendance Of the Employee</h1>
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="display:flex;flex-direction:row; margin-left:45px;">
+      
+
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="list-style: none;">{{ message }}</li>
+    {% endfor %}
+
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %}
+    {% comment %} <button class="show_employee"><a href="{% url 'showemployee' %}">Show Employee</a></button> {% endcomment %}
+    <div class="container2">
+        <div class="card2">
+            <div class="form shadow">
+                
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                
+            <!-- {{form.as_p}} -->
+            
+            <div class="formdiv">
+                <label for="employeename">EmployeeName</label>
+                <input type="text" name="employeename" id="" value="{{postobj.empName}}" readonly>
+                
+                 
+                
+            </div>
+          
+           
+            <div class="formdiv">
+                
+                <label for="">Date</label>  
+                <input type="date" name="date" id="" placeholder="Enter Date" value="{{postobj.date}}">
+
+            </div>
+            <div class="formdiv">
+                
+                <label for="">Status</label>
+                <select name="attendance" id="cars" >
+                    <option selected="selected" disabled value="{{postobj.status}}">{{postobj.status}}</option>
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    
+                </select>
+            </div>
+            
+
+            <button type="submit" class="btn1 btn-success">Mark Attendance</button>
+
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+    
+    

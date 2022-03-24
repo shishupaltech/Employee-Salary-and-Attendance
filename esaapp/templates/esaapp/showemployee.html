@@ -8,10 +8,12 @@
 
 
 
+
     
 
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'styles/showemployee.css' %}"/>
+
 
 {% endblock extrahead %}
 
@@ -25,6 +27,21 @@
 <section class="section">
 
     <h1>All the Department Here</h1>
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="display:flex;flex-direction:row; margin-left:45px;">
+      
+
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="list-style: none;">{{ message }}</li>
+    {% endfor %}
+
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %}
+    
     <div class="container">
         <div class="card">
             <div class="showdata">
@@ -38,7 +55,7 @@
                         <th>Emp_PermanentAddr</th>
                         <th>Emp_City</th>
                         <th>Emp_Pincode</th>
-                        <th>Action</th>
+                        <th colspan="3">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -54,8 +71,9 @@
                           <td>{{empdata.city}}</td>
                           <td>{{empdata.pincode}}</td>
                           
-                          <td><a href="#" class="update">Update</a></td>
-                          <td><a href="#" class="delete">Delete</a></td>
+                          <td><a href="{% url 'updateemployee' empdata.id %} " class="update">Update</a></td>
+                          <td><a href="{% url 'deleteemployee' empdata.id %}" class="delete">Delete</a></td>
+                          <td><a href="{% url 'empattendance' empdata.id %}" class="attendence">Attendence</a></td>
                           
                         </tr>
                         {% endfor %}

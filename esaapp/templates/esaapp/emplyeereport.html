@@ -1,0 +1,98 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}
+    Add Department
+{% endblock title %}
+
+
+
+    
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'styles/emplyeereport.css' %}"/>
+{% endblock extrahead %}
+
+{% block nav %}
+    {% include "navbar.html" %}
+{% endblock nav %}
+{% block content %}
+<section class="section5">
+
+    <h1>Generate The Employee Salary Report</h1>
+    {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="display:flex;flex-direction:row; margin-left:45px;">
+      
+
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="list-style: none;">{{ message }}</li>
+    {% endfor %}
+
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %}
+    <button class="show_department"><a href="{% url 'showdepartment' %}">Report Generate</a></button>
+    <div class="container5">
+        <div class="card5">
+            <div class="form shadow">
+                
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data" class="form5">
+            {% csrf_token %}
+            <!-- {{form.as_p}} -->
+            <div class="formdiv">
+
+                <label for="">Department Name</label>
+                <input type="text" name="departmentname" id="" placeholder="Department Name">
+            </div>
+            <div class="formdiv">
+                
+                <label for="">EmployeeName</label>
+                <input type="text" name="emplyoyeename" id="" placeholder="Basic Pay">
+            </div>
+            <div class="formdiv">
+                
+                <label for="">Year</label>
+                {% comment %} <input type="Year" name="year" id="" placeholder="Basic Pay"> {% endcomment %}
+                <!-- <input type="text" min="1900" max="2099" step="1" maxlength="4" placeholder="Enter Year" />
+                 -->
+                 <select name="department">
+                    
+                    {% for year in year1 %}
+                      <option class="option-select" value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="formdiv">
+                
+                <label for="">Month</label>
+                <select name="" id="" >
+                    <option  selected disabled>------------------------</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="	May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Salary Report</button>
+
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+    
+    

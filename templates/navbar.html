@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+   
+
     <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
     <title>SideBar</title>
 </head>
@@ -21,8 +23,8 @@
                 <li><a href="{% url 'home' %}"><i class="fas fa-house-user" aria-hidden="true"></i><P>Dashboard</P></a></li>
                 <li><a href="{% url 'adddepartment' %}"><i class="fa fa-user-plus" aria-hidden="true"></i><P>Add Department</P></a></li>
                 <li><a href="{% url 'addemployee' %}"><i class="fa fa-bookmark-o" aria-hidden="true"></i><P>Add Employee</P></a></li>
-                <li><a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i><P>Employee Report</P></a></li>
-                <li><a href="#"><i class="fa fa-imdb" aria-hidden="true"></i><P>Leave</P></a></li>
+                <li><a href="{% url 'showattendance' %}"><i class="fa fa-address-book-o" aria-hidden="true"></i><P>Attendance</P></a></li>
+                <li><a href="{% url 'employeereport' %}"><i class="fa fa-imdb" aria-hidden="true"></i><P>Salary Report</P></a></li>
                 <li><a href="#"><i class="fa fa-money" aria-hidden="true"></i><P>Salary</P></a></li>
                 <li><a href="#"><i class="fa fa-flag-checkered" aria-hidden="true"></i><P>Salary Report</P></a></li>
                 <li><a href="#"><i class="fa fa-superpowers" aria-hidden="true"></i><P>Year Wise Report</P></a></li>

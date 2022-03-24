@@ -29,11 +29,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 65vw;
+    width: 70vw;
     background-color: rgb(161, 161, 226);
     position: relative;
     top: 10vh;
-    left: 30vh;
+    left: 20vh;
     box-shadow: 0px 6px 6px 0px rgba(105, 224, 161, 1);
 
 }
@@ -72,6 +72,15 @@
     padding-top: 5px;
     text-align: center;
     background-color: rgb(128, 0, 0);
+}
+.attendence{
+    display: block;
+    width: 120px;
+    height: 35px;
+    box-sizing: border-box;
+    padding-top: 5px;
+    text-align: center;
+    background-color: rgb(89, 240, 157);
 }
 
 

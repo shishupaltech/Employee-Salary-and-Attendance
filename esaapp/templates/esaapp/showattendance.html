@@ -8,10 +8,12 @@
 
 
 
+
     
 
 {% block extrahead %}
-<link rel="stylesheet" href="{% static 'styles/showdepartment.css' %}"/>
+<link rel="stylesheet" href="{% static 'styles/showattendance.css' %}"/>
+
 
 {% endblock extrahead %}
 
@@ -22,9 +24,9 @@
 {% block content %}
 
 
-<section class="section">
+<section class="section4">
 
-    <h1>All the Department Here</h1>
+    <h1>Attendance of All the Employee</h1>
     {% if messages %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert" style="display:flex;flex-direction:row; margin-left:45px;">
       
@@ -39,34 +41,35 @@
       </button>
     </div>
     {% endif %}
-    <div class="container">
-        <div class="card">
+    
+    <div class="container4">
+        <div class="card4">
             <div class="showdata">
              
                 <table class="table">
                     <thead>
                       <tr>
-                        <th>Department Name</th>
-                        <th>BasicPay</th>
-                        <th>Travel Allowance</th>
-                        <th>Medical Allowance</th>
-                        <th>Washing Allowance</th>
-                        <th colspan="2">Action</th>
+                        <th>EmployeeName</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th class="action"  colspan="2">Action</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
                         
-                        {% for showdp in departmentData%}
+                        {% for empattendance in allAttendance%}
                             
                         <tr>
                          
-                          <td>{{showdp.departmentName}}</td>
-                          <td>{{showdp.basicPay}}</td>
-                          <td>{{showdp.travelAllowance}}</td>
-                          <td>{{showdp.medicalAllowance}}</td>
-                          <td>{{showdp.washingAllowance}}</td>
-                          <td><a href="{% url 'updatedepartment' showdp.id %}" class="update">Update</a></td>
-                          <td><a href="{% url 'deletedepartment' showdp.id %}" class="delete">Delete</a></td>
+                          <td>{{empattendance.empName}}</td>
+                          <td>{{empattendance.date}}</td>
+                          <td>{{empattendance.status}}</td>
+                         
+                          
+                          <td><a href="{% url 'updateattendance' empattendance.id %} " class="update">Update</a></td>
+                          {% comment %} <td><a href="{% url 'deleteattendance' empattendance.id %}" class="delete">Delete</a></td> {% endcomment %}
+                          
                           
                         </tr>
                         {% endfor %}

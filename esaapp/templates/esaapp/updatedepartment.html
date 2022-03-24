@@ -20,7 +20,7 @@
 {% block content %}
 <section class="section">
 
-    <h1>Add DipartMent To joing the Employee</h1>
+    <h1>Update Old DipartMent To New Department</h1>
     {% if messages %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert" style="display:flex;flex-direction:row; margin-left:45px;">
       
@@ -35,7 +35,7 @@
       </button>
     </div>
     {% endif %}
-    <button class="show_department"><a href="{% url 'showdepartment' %}">Show Department</a></button>
+    {% comment %} <button class="show_department"><a href="{% url 'showdepartment' %}">Show Department</a></button> {% endcomment %}
     <div class="container">
         <div class="card">
             <div class="form shadow">
@@ -47,27 +47,27 @@
             <div class="formdiv">
 
                 <label for="">Department Name</label>
-                <input type="text" name="department" id="" placeholder="Department Name">
+                <input type="text" name="department" id="" placeholder="Department Name" value={{postobj.departmentName}}>
             </div>
             <div class="formdiv">
                 
                 <label for="">Basic Pay</label>
-                <input type="number" name="basicpay" id="" placeholder="Basic Pay">
+                <input type="number" name="basicpay" id="" placeholder="Basic Pay" value={{postobj.basicPay}}>
             </div>
             <div class="formdiv">
                 
                 <label for="">Travel Allowance</label>  
-                <input type="number" name="travelallowance" id="" placeholder="Travel Allowance">
+                <input type="number" name="travelallowance" id="" placeholder="Travel Allowance" value={{postobj.travelAllowance}}>
             </div>
             <div class="formdiv">
                 
                 <label for="">Medical Allowance</label>
-                <input type="number" name="medicalallowance" placeholder="Medical Allowance">
+                <input type="number" name="medicalallowance" placeholder="Medical Allowance" value={{postobj.medicalAllowance}}>
             </div>
             <div class="formdiv">
                 
                 <label for="">Washing Allowance</label>
-                <input type="number" name="washingallowance" id="" placeholder="Washing Allowance">              
+                <input type="number" name="washingallowance" id="" placeholder="Washing Allowance" value={{postobj.washingAllowance}}>              
             </div>
             <button type="submit" class="btn btn-success">Add Department</button>
 

@@ -1,4 +1,7 @@
+from datetime import datetime
+from distutils.command.upload import upload
 from enum import unique
+import os
 from turtle import mode
 from django.db import models
 from numpy import require
@@ -14,24 +17,36 @@ class AddDepartment(models.Model):
     washingAllowance = models.BigIntegerField(blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True,null=True) #when we create this model this autometcally generate current date and time after completing the models then register it in admin .py
     
+    
     def __str__(self):
         return self.departmentName
-    
+
 class AddEmployee(models.Model):
     #relationship between two table by using the foreign key like this
-    department  = models.ForeignKey(AddDepartment ,on_delete=models.SET_NULL,null=True)
-    
+    department  = models.CharField(max_length=191,null=True,blank=True)
+  
     fullName = models.CharField(max_length=191,null=True,blank=True)
     address = models.CharField(max_length=200,null=True,blank=True)
     permanentAddr = models.CharField(max_length=250,null=True,blank=True)
     city=models.CharField(max_length=150,null=True,blank=True)
-    pincode = models.IntegerField(null=True,blank=True)
-    mobile = models.IntegerField(null=True,blank=True)
+    pincode = models.BigIntegerField(null=True,blank=True)
+    state = models.CharField(max_length=191,null=True,blank=True)
+    mobile = models.BigIntegerField(null=True,blank=True)
     bankAccount = models.BigIntegerField(null=True,blank=True)
+    
+    
     email = models.EmailField(max_length=255)
     pasword = models.CharField(max_length=50)
     def __str__(self):
         return self.fullName
+    
+
+class Attendance(models.Model):
+    empName=models.CharField(max_length=50,null=True,blank=True)
+    date = models.DateField()
+    status = models.CharField(max_length=50,blank=True,null=True)
+    created_at = models.DateTimeField(auto_now_add=True,null=True) 
+    
     
     
     
