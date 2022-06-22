@@ -1,9 +1,11 @@
 from calendar import month
 from distutils.command.upload import upload
+import email
 from email.policy import default
 from turtle import mode
 from django.db import models
 from numpy import require
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -52,7 +54,20 @@ class SalaryReport(models.Model):
         return self.fullName
 
 #**************************to here added 3/17***********************************
-    
+class EmployeeDetail(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.CharField(max_length=50, null=True)
+    empcode = models.CharField(max_length=50)
+    empdept = models.CharField(max_length=50)
+    designation = models.CharField(max_length=100, null=True)
+    contact = models.CharField(max_length=15, null=True)
+    gender = models.CharField(max_length=50, null=True)
+    joindate = models.DateField(null=True)
+    firstname = models.CharField(max_length=100, null=True)
+    lastname = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.user.username
     
     
 

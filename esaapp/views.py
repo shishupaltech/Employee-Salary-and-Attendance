@@ -1,10 +1,15 @@
 from calendar import month
+from distutils.log import error
+import email
+import imp
 from multiprocessing import context
 from re import search
 from django.shortcuts import redirect, render
-from .models import AddDepartment, AddEmployee
+# from .models import AddDepartment, AddEmployee
 from .forms import AddDepartmentForm,AddEmployeeForm
 from .models import SalaryReport
+from .models import *
+from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
 
@@ -36,6 +41,39 @@ def search_salary(request):
     sal = SalaryReport.objects.filter(month = sea)
     return render(request, 'esaapp/search_salary.html', {'sal': sal})
   #to here added 3/20
+def registration(request):
+    error = ""
+    if request.method == "POST":
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        employee_code = request.POST['empcode']
+        email = request.POST['email']
+        password = request.POST['password']
+        try:
+            user = User.objects.create_user(first_name = firstname, last_name = lastname, username = email, password = password)
+            EmployeeDetail.objects.create(user = user, empcode = employee_code)
+            error = "no"
+        except:
+            error = "yes"
+    return render(request,'esaapp/registration.html', locals())
+def emp_login(request):
+    error = ""
+    if request.method == "POST":
+        u = request.POST['email']
+        pa = request.POST['password']
+        user = authenticate(username = u, password = pa)
+        if user:
+            login(request, user)
+            # return redirect('home') #provided home url in the js code
+            error = "no"
+            
+        else:
+            error = "yes"
+        
+    return render(request,'esaapp/emp_login.html', locals())
+def emp_page(request):
+    details = EmployeeDetail.objects.all()
+    return render(request,'esaapp/emp_page.html',{'details': details})
 
 def navbar1(request):
     return render(request,'esaapp/navbar1.html')

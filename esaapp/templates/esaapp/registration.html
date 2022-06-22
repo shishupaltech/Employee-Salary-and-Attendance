@@ -1,0 +1,54 @@
+<script>
+    function checkpassword()
+    {
+        if(document.signup.password.value != document.signup.cpassword.value){
+            alert('Password doesnt match');
+            document.signup.cpassword.focus();
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<div>
+<form method="post" name="signup" onsubmit = " checkpassword()" >
+    {% csrf_token %}
+  
+              <h3 class="mb-5">Register</h3>
+              <div>
+              <label>Fisrt Name</label>
+              <input type="text" id="firstname" name="firstname" required>
+              <label>Last Name</label>
+              <input type="text" id="firstname" name="lastname" required>
+              </div>
+              <div>
+                <input type="email" id="typeEmailX-2"name = "email" placeholder="Enter " required/>
+                <label class="form-label" for="typeEmailX-2">Email</label>
+            </div>
+              <div>
+                <input type="text" id="typeEmailX-2"name = "empcode" placeholder="Enter " required/>
+                <label class="form-label" for="typeEmailX-2">Employee Code</label>
+            </div>
+            <div>
+                <input type="password" required id="typePasswordX-2" name="password" placeholder="Password" class="form-control form-control-lg" />
+                <label class="form-label" for="typePasswordX-2">Password</label>
+            </div>
+            <div>
+                <input type="password" required id="typePasswordX-2" name="cpassword" placeholder="Confirm Password" class="form-control form-control-lg" />
+                <label class="form-label" for="typePasswordX-2">Confirm Password</label>
+            </div>
+              <button class="btn btn-primary btn-lg btn-block"  type="submit">Register</button>
+</form>
+</div>
+{% if error == "no" %}
+<script>
+    alert('Registered');
+    window.location = "{% url 'emp_login' %}";
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert('Something went wrong!');
+
+</script>
+{% endif %}
